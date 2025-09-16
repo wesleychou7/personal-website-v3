@@ -50,10 +50,9 @@ export default function Home() {
           {/* <div>Social Media</div> */}
         </div>
         <div>
-          Hello! I study computer engineering & computer science at USC, and I'm
-          currently a SWE intern at Paramount. I really enjoy building things.
-          Currently looking for Fall or new grad opportunities. Feel free to
-          reach out!
+          Hello! I study computer engineering & computer science at USC, and I'm currently a SWE
+          intern at Paramount. I really enjoy building things. Currently looking for Spring or new
+          grad opportunities. Feel free to reach out!
         </div>
         <div>
           <div className="mb-2 font-bold">Work</div>
