@@ -1,8 +1,16 @@
 import Image from "next/image";
 import { MdOutlineOpenInNew } from "react-icons/md";
+import CopyableEmail from "./components/CopyableEmail";
 
 export default function Home() {
   const work = [
+    {
+      title: "Incoming Software Engineering Intern",
+      company: "Tesla",
+      description: "Energy",
+      date: "2026",
+      logo: "/tesla.jpeg",
+    },
     {
       title: "Software Engineering Intern",
       company: "Paramount Plus",
@@ -45,14 +53,21 @@ export default function Home() {
   return (
     <div className="w-full h-full flex justify-center">
       <div className="w-full h-full md:w-1/3 p-6 pt-16 pb-32 flex flex-col justify-center gap-8">
-        <div className="flex flex-row justify-between">
+        <div className="flex flex-row justify-between items-center">
           <div className="font-bold">Wesley Chou</div>
-          {/* <div>Social Media</div> */}
+          <div className="flex flex-row gap-4 text-sm text-gray-400">
+            <a href="http://www.linkedin.com/in/wesley-chou-713640235" target="_blank">
+              <div className="underline">LinkedIn</div>
+            </a>
+            <a href="https://github.com/wesleychou7" target="_blank">
+              <div className="underline">GitHub</div>
+            </a>
+            <CopyableEmail email="chouwesl@usc.edu" />
+          </div>
         </div>
         <div>
-          Hello! I study computer engineering & computer science at USC, and I'm currently a SWE
-          intern at Paramount. I really enjoy building things. Currently looking for Spring or new
-          grad opportunities. Feel free to reach out!
+          Hello! I study computer engineering & computer science at USC. I love building things for
+          people. Feel free to reach out!
         </div>
         <div>
           <div className="mb-2 font-bold">Work</div>
