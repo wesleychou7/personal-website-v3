@@ -5,7 +5,7 @@ import CopyableEmail from "./components/CopyableEmail";
 export default function Home() {
   const work = [
     {
-      title: "Incoming Software Engineering Intern",
+      title: "Software Engineering Intern",
       company: "Tesla",
       description: "Energy",
       date: "2026",
@@ -45,9 +45,15 @@ export default function Home() {
     {
       title: "Branching Chat",
       link: "https://branchingchat.com",
-      description: "A chat app that allows you to branch conversations.",
+      description: "A chat app that allows you to branch conversations like a tree.",
       src: "/Branching Chat Demo v2.mp4",
     },
+    {
+      title: "Pillar",
+      link: "https://youtu.be/0vhIymZsygU",
+      description: "AI powered takeoffs and cost estimates for construction projects.",
+      src: "/Pillar Short Demo.mp4",
+    }
   ];
 
   return (
@@ -66,11 +72,10 @@ export default function Home() {
           </div>
         </div>
         <div>
-          Hello! I study computer engineering & computer science at USC. I love building things for
-          people. Feel free to reach out!
+          Hello! I study computer engineering & computer science at USC and I am currently interning at Tesla. Feel free to reach out!
         </div>
         <div>
-          <div className="mb-2 font-bold">Work</div>
+          <div className="mb-4 font-bold">Work</div>
           <div className="flex flex-col gap-4">
             {work.map((item, index) => (
               <div key={index}>
@@ -95,28 +100,30 @@ export default function Home() {
           </div>
         </div>
         <div>
-          <div className="mb-2 font-bold">Projects</div>
-          {projects.map((item, index) => (
-            <div key={index}>
-              <video
-                autoPlay
-                loop
-                muted
-                playsInline
-                className="border-1 border-gray-200 rounded-md mb-2"
-              >
-                <source src={item.src} type="video/mp4" />
-              </video>
-              <div className="flex ">
-                <a href={item.link} target="_blank">
-                  {item.title}
-                  {"   "}
-                  <MdOutlineOpenInNew className="inline text-gray-400" />
-                </a>
+          <div className="mb-4 font-bold">Projects</div>
+          <div className="flex flex-col gap-8">
+            {projects.map((item, index) => (
+              <div key={index}>
+                <video
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  className="border-1 border-gray-200 rounded-md mb-2"
+                >
+                  <source src={item.src} type="video/mp4" />
+                </video>
+                <div className="flex ">
+                  <a href={item.link} target="_blank">
+                    {item.title}
+                    {"   "}
+                    <MdOutlineOpenInNew className="inline text-gray-400" />
+                  </a>
+                </div>
+                <div className="text-sm text-gray-400">{item.description}</div>
               </div>
-              <div className="text-sm text-gray-400">{item.description}</div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </div>
