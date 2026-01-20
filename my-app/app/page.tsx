@@ -1,8 +1,22 @@
+"use client";
+
 import Image from "next/image";
 import { MdOutlineOpenInNew } from "react-icons/md";
-import CopyableEmail from "./components/CopyableEmail";
+import { useState } from "react";
 
 export default function Home() {
+  const [emailCopied, setEmailCopied] = useState(false);
+
+  const handleEmailClick = async () => {
+    try {
+      await navigator.clipboard.writeText("chouwesl@usc.edu");
+      setEmailCopied(true);
+      setTimeout(() => setEmailCopied(false), 3000);
+    } catch (err) {
+      console.error("Failed to copy email:", err);
+    }
+  };
+
   const work = [
     {
       title: "Software Engineering Intern",
@@ -14,28 +28,25 @@ export default function Home() {
     {
       title: "Software Engineering Intern",
       company: "Paramount Plus",
-      description: "Chromecast team",
       date: "2025",
       logo: "/paramount.png",
     },
     {
       title: "Founder",
       company: "TransferPlan",
-      description: "transferplan.com",
       date: "2024",
       logo: "/transferplan.png",
+      link: "https://transferplan.com",
     },
     {
       title: "Software Engineering Intern",
       company: "Coding Minds Academy",
-      description: "internal tools",
       date: "2023",
       logo: "/cma.jpeg",
     },
     {
       title: "Software Engineering Intern",
       company: "Sony Electronics",
-      description: "internal tools",
       date: "2022",
       logo: "/sony.png",
     },
@@ -43,39 +54,44 @@ export default function Home() {
 
   const projects = [
     {
-      title: "Branching Chat",
-      link: "https://branchingchat.com",
-      description: "A chat app that allows you to branch conversations like a tree.",
-      src: "/Branching Chat Demo v2.mp4",
-    },
-    {
       title: "Pillar",
       link: "https://youtu.be/0vhIymZsygU",
       description: "AI powered takeoffs and cost estimates for construction projects.",
       src: "/Pillar Short Demo.mp4",
+    },
+    {
+      title: "Branching Chat",
+      link: "https://branchingchat.com",
+      description: "A chat app that allows you to branch conversations like a tree.",
+      src: "/Branching Chat Demo v2.mp4",
     }
   ];
 
   return (
     <div className="w-full h-full flex justify-center">
-      <div className="w-full h-full md:w-1/3 p-6 pt-16 pb-32 flex flex-col justify-center gap-8">
+      <div className="w-full h-full md:w-1/3 p-6 pt-16 pb-32 flex flex-col justify-center gap-12">
         <div className="flex flex-row justify-between items-center">
           <div className="font-bold">Wesley Chou</div>
-          <div className="flex flex-row gap-4 text-sm text-gray-400">
+          <div className="flex flex-row gap-2 sm:gap-2 md:gap-3 lg:gap-4 text-sm text-gray-400">
             <a href="http://www.linkedin.com/in/wesley-chou-713640235" target="_blank">
               <div className="underline">LinkedIn</div>
             </a>
             <a href="https://github.com/wesleychou7" target="_blank">
               <div className="underline">GitHub</div>
             </a>
-            <CopyableEmail email="chouwesl@usc.edu" />
+            <a href="https://x.com/_wesleychou" target="_blank">
+              <div className="underline">Twitter</div>
+            </a>
+            <div className="underline cursor-pointer" onClick={handleEmailClick}>
+              {emailCopied ? "Email copied!" : "Email"}
+            </div>
           </div>
         </div>
         <div>
-          Hello! I study computer engineering & computer science at USC and I am currently interning at Tesla. Feel free to reach out!
+          Hello! I study computer engineering & computer science at USC. I am currently an intern at Tesla. Feel free to reach out!
         </div>
         <div>
-          <div className="mb-4 font-bold">Work</div>
+          <div className="mb-4 font-bold">Experience</div>
           <div className="flex flex-col gap-4">
             {work.map((item, index) => (
               <div key={index}>
@@ -89,7 +105,16 @@ export default function Home() {
                       className="rounded-md object-contain"
                     />
                     <div>
-                      <div className="font-medium">{item.company}</div>
+                      <div>
+                        {item.link ? (
+                          <a href={item.link} target="_blank" className="inline-flex items-center gap-1">
+                            {item.company}
+                            <MdOutlineOpenInNew className="text-gray-400" />
+                          </a>
+                        ) : (
+                          item.company
+                        )}
+                      </div>
                       <div className="text-sm text-gray-400">{item.title}</div>
                     </div>
                   </div>
